@@ -5,15 +5,15 @@ from .models import Pokemon
 
 @admin.register(Pokemon)  # This is a decorator
 class PokemonAdmin(admin.ModelAdmin):
-    list_diplay = ('id', 'name', 'hp', 'active',)
+    list_display = ('id', 'name', 'hp', 'active',)
     list_display_links = ('id', 'name',)
     list_filter = ('active',)
-    readonly_fields: ('created_at', 'updated_at',)
+    readonly_fields = ('created_at', 'modified_at',)
 
     fieldsets = (
         (
             "general", {
-                'fileds': ('name', 'hp', 'active', 'type',)
+                'fields': ('name', 'hp', 'active', 'type',)
             }
         ),
         (
@@ -24,7 +24,7 @@ class PokemonAdmin(admin.ModelAdmin):
         ),
         (
             None, {
-                'fielda': ('created_at', 'updated_at',)
+                'fields': ('created_at', 'updated_at',)
             }
         )
     )
